@@ -3,26 +3,15 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 /*
- * |==============================================================|
- * | Please DO NOT modify this information :                      |
- * |--------------------------------------------------------------|
- * | Author          : Susantokun
- * | Email           : admin@susantokun.com
- * | Filename        : my_helper.php
- * | Instagram       : @susantokun
- * | Blog            : http://www.susantokun.com
- * | Info            : http://info.susantokun.com
- * | Demo            : http://demo.susantokun.com
- * | Youtube         : http://youtube.com/susantokun
- * | File Created    : Friday, 13th March 2020 3:37:45 am
- * | Last Modified   : Friday, 13th March 2020 3:41:33 am
- * |==============================================================|
+ * | Author          : Aldi Pranata
+ * | Email           : aldyjrz@gmail.com
  */
 
 if(!function_exists('get_hash')){
     function get_hash($PlainPassword){
-        $option=['cost'=>5];
-    	return password_hash($PlainPassword, PASSWORD_DEFAULT, $option);
+      
+          $options = ['cost'=> 5];
+     	return password_hash($PlainPassword, PASSWORD_DEFAULT);
    }
 }
 

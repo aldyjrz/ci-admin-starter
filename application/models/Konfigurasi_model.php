@@ -1,24 +1,7 @@
 <?php
 
 defined('BASEPATH') or exit('No direct script access allowed');
-
-/*
- * |==============================================================|
- * | Please DO NOT modify this information :                      |
- * |--------------------------------------------------------------|
- * | Author          : Susantokun
- * | Email           : admin@susantokun.com
- * | Filename        : Konfigurasi_model.php
- * | Instagram       : @susantokun
- * | Blog            : http://www.susantokun.com
- * | Info            : http://info.susantokun.com
- * | Demo            : http://demo.susantokun.com
- * | Youtube         : http://youtube.com/susantokun
- * | File Created    : Friday, 13th March 2020 3:37:45 am
- * | Last Modified   : Friday, 13th March 2020 3:42:37 am
- * |==============================================================|
- */
-
+ 
 class Konfigurasi_model extends CI_Model
 {
     public $table = 'tbl_konfigurasi';

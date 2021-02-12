@@ -1,1 +1,1 @@
-DASHBOARD ADMIN
+Admin Dashboard

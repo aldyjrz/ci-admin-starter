@@ -1,1 +1,1 @@
-DASHBOARD MEMBER
+Member Dashboard

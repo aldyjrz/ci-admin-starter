@@ -7,7 +7,7 @@
     <!-- Sidebar user panel (optional) -->
     <div class="user-panel">
       <div class="pull-left image">
-				<img src="<?php echo base_url('assets/uploads/images/foto_profil/'.$userdata->photo); ?>" class="img-circle">
+				<img src="<?php echo base_url('assets/uploads/images/member.png'); ?>" class="img-circle">
 			</div>
       <div class="pull-left info">
         <p><?php echo $this->session->userdata('username')?></p>
@@ -16,18 +16,7 @@
       </div>
     </div>
 
-    <!-- search form (Optional) -->
-    <form action="#" method="get" class="sidebar-form">
-      <div class="input-group">
-        <input type="text" name="q" class="form-control" placeholder="Search...">
-        <span class="input-group-btn">
-              <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-              </button>
-            </span>
-      </div>
-    </form>
-    <!-- /.search form -->
-
+    
     <!-- Sidebar Menu -->
     <ul class="sidebar-menu" data-widget="tree">
       <li class="header">HEADER</li>

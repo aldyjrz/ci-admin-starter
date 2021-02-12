@@ -16,7 +16,7 @@
 	<script src="<?php echo base_url('assets');?>/vendor/jquery/jquery.min.js"></script>
 </head>
 
-<body class="hold-transition skin-blue fixed sidebar-mini">
+<body class="hold-transition skin-black fixed sidebar-mini">
 	<div class="wrapper">
 		<!-- header -->
 		<?php require_once('_header.php') ;?>

@@ -118,7 +118,7 @@ class Auth extends MY_Controller
                 //jika bernilai TRUE maka alihkan halaman sesuai dengan level nya
                 if ($data->id_role == '1') {
                     redirect('admin/home');
-                } elseif ($data->id_role == '2') {
+                } elseif ($data->id_role != '1') {
                     redirect('member/home');
                 }
             } else {
