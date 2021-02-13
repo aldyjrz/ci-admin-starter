@@ -99,5 +99,12 @@ class CI_Controller {
 	{
 		return self::$instance;
 	}
+	public function check_login()
+    {
+        // pengecekan jika tidak ada email dari session maka diarahkan untuk login
+        if (!$this->session->userdata('is_login')) {
+            redirect('auth/login');
+        }
+    }
 
 }

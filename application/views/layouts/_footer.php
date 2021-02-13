@@ -1,9 +1,8 @@
-<footer class="main-footer">
-	<div class="pull-right hidden-xs">
-		<?php if (ENVIRONMENT=='development'): ?>
-		<b>CodeIgniter</b> <?php echo CI_VERSION; ?>
-		<b>AdminLTE</b> 2.4.3
-		<?php endif; ?>
-	</div>
-	<strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">AdminLTE</a>.</strong> All rights reserved.
-</footer>
+
+  <footer class="main-footer">
+    <strong>Copyright &copy; 2014-2020 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
+    All rights reserved.
+    <div class="float-right d-none d-sm-inline-block">
+      <b>Version</b> 3.1.0-rc
+    </div>
+  </footer>

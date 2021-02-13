@@ -1,5 +1,21 @@
-<link href="<?php echo base_url('assets');?>/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<link href="<?php echo base_url('assets');?>/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-<link href="<?php echo base_url('assets');?>/vendor/AdminLTE-2.4.3/css/AdminLTE.min.css" rel="stylesheet">
-<link href="<?php echo base_url('assets');?>/vendor/iCheck/square/blue.css" rel="stylesheet">
-<script src="<?php echo base_url('assets');?>/vendor/jquery/jquery.min.js"></script>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela+Round:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="<?=base_url()?>plugins/fontawesome-free/css/all.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Tempusdominus Bootstrap 4 -->
+  <link rel="stylesheet" href="<?=base_url()?>plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="<?=base_url()?>plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- JQVMap -->
+  <link rel="stylesheet" href="<?=base_url()?>plugins/jqvmap/jqvmap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="<?=base_url()?>dist/css/adminlte.min.css">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="<?=base_url()?>plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="<?=base_url()?>plugins/daterangepicker/daterangepicker.css">
+  <!-- summernote -->
+  <link rel="stylesheet" href="<?=base_url()?>plugins/summernote/summernote-bs4.min.css">

@@ -1,25 +1,8 @@
 <?php 
 
 defined('BASEPATH') or exit('No direct script access allowed');
-
-/*
- * |==============================================================|
- * | Please DO NOT modify this information :                      |
- * |--------------------------------------------------------------|
- * | Author          : Susantokun
- * | Email           : admin@susantokun.com
- * | Filename        : Auth.php
- * | Instagram       : @susantokun
- * | Blog            : http://www.susantokun.com
- * | Info            : http://info.susantokun.com
- * | Demo            : http://demo.susantokun.com
- * | Youtube         : http://youtube.com/susantokun
- * | File Created    : Friday, 13th March 2020 3:37:45 am
- * | Last Modified   : Friday, 13th March 2020 3:40:47 am
- * |==============================================================|
- */
-
-class Auth extends MY_Controller
+ 
+class Auth extends CI_Controller
 {
     public function __construct()
     {
@@ -92,12 +75,8 @@ class Auth extends MY_Controller
     }
     public function login()
     {
-        $site = $this->Konfigurasi_model->listing();
-        $data = array(
-            'title'     => 'Login | '.$site['nama_website'],
-            'favicon'   => $site['favicon'],
-            'site'      => $site
-        );
+       
+      $data['title'] = 'Login Administrator';
         //melakukan pengalihan halaman sesuai dengan levelnya
         if ($this->session->userdata('id_role') == "1") {
             redirect('admin/dashboard');
@@ -122,10 +101,10 @@ class Auth extends MY_Controller
                     redirect('member/home');
                 }
             } else {
-                $this->template->load('authentication/layouts/template', 'authentication/login', $data);
+                view('authentication/layouts/template', 'authentication/login', $data);
             }
         } else {
-            $this->template->load('authentication/layouts/template', 'authentication/login', $data);
+            view('authentication/layouts/template', 'authentication/login', $data);
         }
     }
     public function logout()
