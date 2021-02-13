@@ -39,7 +39,7 @@
 }
 .skin-black .main-header .navbar > .sidebar-toggle {
 	color: #333;
-	border-right: 1px solid #eee;
+	border-right: 1px solid #333;
 }
 .skin-black .main-header .navbar .navbar-nav > li > a {
 	border-right: 1px solid #eee;

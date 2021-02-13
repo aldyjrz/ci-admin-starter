@@ -62,7 +62,7 @@ class Auth extends MY_Controller
         } elseif ($query === 3) {
             $this->session->set_flashdata('alert', '<p class="box-msg">
         			<div class="info-box alert-danger">
-        			<div class="info-box-icon">
+        			<div class="info-box++--icon">
         			<i class="fa fa-warning"></i>
         			</div>
         			<div class="info-box-content" style="font-size:14">
@@ -100,7 +100,7 @@ class Auth extends MY_Controller
         );
         //melakukan pengalihan halaman sesuai dengan levelnya
         if ($this->session->userdata('id_role') == "1") {
-            redirect('admin/home');
+            redirect('admin/dashboard');
         }
         if ($this->session->userdata('id_role') == "2") {
             redirect('member/home');
@@ -117,7 +117,7 @@ class Auth extends MY_Controller
 
                 //jika bernilai TRUE maka alihkan halaman sesuai dengan level nya
                 if ($data->id_role == '1') {
-                    redirect('admin/home');
+                    redirect('admin/dashboard');
                 } elseif ($data->id_role != '1') {
                     redirect('member/home');
                 }
