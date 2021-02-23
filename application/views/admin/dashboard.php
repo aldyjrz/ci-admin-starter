@@ -1,120 +1,123 @@
-  <div class="content-wrapper">
-   <!-- Content Header (Page header) -->
-   <div class="content-header" style="margin-top: 50px;">
-     <div class="container-fluid">
-       <div class="row mb-2">
-         <div class="col-sm-6">
-           <h1 class="m-0">Dashboard</h1>
-         </div><!-- /.col -->
-         <div class="col-sm-6">
-           <ol class="breadcrumb float-sm-right">
-             <li class="breadcrumb-item"><a href="#">Home</a></li>
-             <li class="breadcrumb-item active">Dashboard v1</li>
-           </ol>
-         </div><!-- /.col -->
-       </div><!-- /.row -->
-     </div><!-- /.container-fluid -->
-   </div>
-   <!-- /.content-header -->
+<?php
+date_default_timezone_set("Asia/Jakarta");
 
-   <!-- Main content -->
-   <section class="content">
-     <div class="container-fluid">
-       <!-- Small boxes (Stat box) -->
-       
-       <!-- Main row -->
-       <div class="row">
-         <!-- Left col -->
-         <section class="col-lg-12 connectedSortable">
-           <!-- Custom tabs (Charts with tabs)-->
-           <div class="card">
-             <div class="card-header">
-               <h3 class="card-title">
-                 <i class="fas fa-chart-pie mr-1"></i>
-                 Sales
-               </h3>
-               <div class="card-tools">
-                 <ul class="nav nav-pills ml-auto">
-                   <li class="nav-item">
-                     <a class="nav-link active" href="#revenue-chart" data-toggle="tab">Area</a>
-                   </li>
-                   <li class="nav-item">
-                     <a class="nav-link" href="#sales-chart" data-toggle="tab">Donut</a>
-                   </li>
-                 </ul>
-               </div>
-             </div><!-- /.card-header -->
-             <div class="card-body">
-                 <div class="row">
-         <div class="col-lg-3 col-6">
-           <!-- small box -->
-           <div class="small-box bg-info">
-             <div class="inner">
-               <h3>150</h3>
+$server = "localhost";
+$username = "root";
+$password = "";
+$database = "db_customerA";
+$base_url = "http://115.124.73.22:8091/android/api/customer/";
 
-               <p>New Orders</p>
-             </div>
-             <div class="icon">
-               <i class="ion ion-bag"></i>
-             </div>
-             <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-           </div>
-         </div>
-         <!-- ./col -->
-         <div class="col-lg-3 col-6">
-           <!-- small box -->
-           <div class="small-box bg-success">
-             <div class="inner">
-               <h3>53<sup style="font-size: 20px">%</sup></h3>
+$con = mysqli_connect($server, $username, $password, $database); // or die("koneksi gagal");
 
-               <p>Bounce Rate</p>
-             </div>
-             <div class="icon">
-               <i class="ion ion-stats-bars"></i>
-             </div>
-             <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-           </div>
-         </div>
-         <!-- ./col -->
-         <div class="col-lg-3 col-6">
-           <!-- small box -->
-           <div class="small-box bg-warning">
-             <div class="inner">
-               <h3>44</h3>
+if (isset($_GET['nik'])) {
+  $kordinat = $_GET['nik'];
+}
+$gudang = $_GET['gudang'];
+?>
 
-               <p>User Registrations</p>
-             </div>
-             <div class="icon">
-               <i class="ion ion-person-add"></i>
-             </div>
-             <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-           </div>
-         </div>
-         <!-- ./col -->
-         <div class="col-lg-3 col-6">
-           <!-- small box -->
-           <div class="small-box bg-danger">
-             <div class="inner">
-               <h3>65</h3>
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <div class="content-header" style="margin-top: 50px;">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0">Dashboard</h1>
+        </div><!-- /.col -->
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">Dashboard Admin</li>
+          </ol>
+        </div><!-- /.col -->
+      </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
+  <!-- /.content-header -->
 
-               <p>Unique Visitors</p>
-             </div>
-             <div class="icon">
-               <i class="ion ion-pie-graph"></i>
-             </div>
-             <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-           </div>
-         </div>
-         <!-- ./col -->
-             </div><!-- /.card-body -->
-           </div>
-           <!-- /.card -->
+  <!-- Main content -->
+  <section class="content">
+    <div class="container-fluid">
+      <!-- Small boxes (Stat box) -->
+      <main class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <br>
+
+            <form action='http://127.0.0.1/admin-ia/admin/dashboard/' method="GET">
+              <div class="card">
+                <div class="card-header">Cari Lokasi Driver</div>
+                <label class="col-md-6 col-form-label">Input NIK Driver</label>
+                <div class="col-md-3">
+                  <input type='text' id='nik_driver' class='form-control' ></input>
+
+                  <button class="btn btn-info mt-3">TRACK DRIVER</button>
+                </div>
+                <hr>
+                <label class="col-md-6 col-form-label">KODE GUDANG*</label>
+                <div class="col-md-6">
+                  <select class="form-control" name='gudang' id="gudang" value='<?=$gudang ?>'> 
+                  <option value="all">SHOW ALL</option>
+                    <option value="KRW">KARAWANG</option>
+                    <option value="SBY">SURABAYA</option>
+                    <option value="BDG">BANDUNG</option>
+                    <option value="SMG">SEMARANG</option>
+                    <option value="MKS">MAKASSAR</option>
+                    <option value="KLT">KLATEN</option>
+                    <option value="MDN">MEDAN</option>
+
+                   
+                  </select>
+
+                  <button class="btn btn-info mb-3 mt-3">CARI LOKASI</button>
+                </div>
+                <label class="col-md-6 col-form-label">Berdasarkan Nik Driver</label>
+                <div class="col-md-6">
+                  <select class="form-control" name='nik' id="nik">
+                    <option value="all" selected>SHOW ALL</option>
+
+                    <?php
+                 
+                    $log = mysqli_query($con, "select * from tbl_log  where parameter like '%$gudang%'  group by parameter order by id ASC LIMIT 1000");
+
+                    while ($data = mysqli_fetch_assoc($log)) {
+                      $pisah = explode("&", $data['parameter']);
+
+                      $gd = $pisah[0];
+
+                      $nik_driver = $pisah[1];
+
+                    ?>
+
+                      <option value="<?php echo $nik_driver ?>"> <?php echo $nik_driver ?> - <?php echo $gd ?></option>
+
+                    <?php } ?>
+
+                  </select>
+
+                  <button class="btn btn-info mb-3 mt-3">CARI LOKASI</button>
+                </div>
+                
+              </div>
+          </div>
+          </form>
+          <span id="error"></span>
+        </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span>Driver Location</span>
+      </div>
+      <div id="map"></div>
+    </div>
+    </main>
+
+
+
+</div>
+<!-- /.row (main row) -->
+</div><!-- /.container-fluid -->
+</section>
+<!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
  
- 
-       </div>
-       <!-- /.row (main row) -->
-     </div><!-- /.container-fluid -->
-   </section>
-   <!-- /.content -->
- </div>
- <!-- /.content-wrapper -->

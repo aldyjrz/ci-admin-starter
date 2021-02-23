@@ -17,16 +17,24 @@
         <div class="info" style="font-size:12px;">
           <a href="#" class="d-block"><?php echo $this->session->userdata('username')?></a>
           <a class="d-block">IP login: <?php echo $_SERVER['REMOTE_ADDR']?></a>
-          <a >View Profile</a>
+          <a class="d-block">View Profile</a>
+          <a href="<?=base_url('auth/logout')?>" >Logout</a>
 
         </div>
       </div>
  
       <!-- Sidebar Menu -->
       <nav style="font-size: 12px;"  >
+      
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
+               <li class="nav-item">
+            <a href="./dashboard" class="nav-link">
+              <i class="nav-icon fas fa-home"></i>
+              <p class="text">DASHBOARD Admin</p>
+            </a>
+          </li>
           <li class="nav-item menu-open" >
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-database"></i>

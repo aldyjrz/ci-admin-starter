@@ -24,7 +24,10 @@
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
-      <p class="login-box-msg">Sign in to start your session</p>
+    <div id="myalert" style="font-color:#313131;">
+		<?php echo $this->session->flashdata('alert', true); ?>
+	</div>
+      <p class="login-box-msg">Selamat datang di halaman admin Indoarsip</p>
 	
       <form method="POST" action="<?php echo base_url('auth/login'); ?>" role="login">
         <div class="input-group mb-3">
@@ -62,9 +65,7 @@
       </form>
  
       <!-- /.social-auth-links -->
-	  <div id="myalert">
-		<?php echo $this->session->flashdata('alert', true); ?>
-	</div>
+	 
       <p class="mb-1">
         <a href="forgot-password.html">I forgot my password</a>
       </p>

@@ -21,35 +21,35 @@ class Auth extends CI_Controller
         $query = $this->Auth_model->check_account($email, $password);
 
         if ($query === 1) {
-            $this->session->set_flashdata('alert', '<p class="box-msg">
-        			<div class="info-box alert-danger">
-        			<div class="info-box-icon">
-        			<i class="fa fa-warning"></i>
+            $this->session->set_flashdata('alert', '<p class="box-msg" >
+        			<div class="info-box alert-danger" >
+        			<div class="info-box-icon bg-info" >
+        			<i class="fas fa-exclamation"></i>
         			</div>
-        			<div class="info-box-content" style="font-size:14">
-        			<b style="font-size: 20px">GAGAL</b><br>Email yang Anda masukkan tidak terdaftar.</div>
+        			<div class="info-box-content" style="font-size:10">
+        			<a style=" font-size:12px;color:#313131;">GAGAL<br>Email yang Anda masukkan tidak terdaftar.</a></div>
         			</div>
         			</p>
             ');
         } elseif ($query === 2) {
             $this->session->set_flashdata('alert', '<p class="box-msg">
               <div class="info-box alert-info">
-              <div class="info-box-icon">
-              <i class="fa fa-info-circle"></i>
+              <div class="info-box-icon bg-info" >
+              <i class="fas fa-key"></i>
               </div>
-              <div class="info-box-content" style="font-size:14">
-              <b style="font-size: 20px">GAGAL</b><br>Akun yang Anda masukkan tidak aktif, silakan hubungi Administrator.</div>
+              <div class="info-box-content" style="font-size:10">
+              < a>style="font-size:12px;color:#313131;">GAGAL</b><br>Akun yang Anda masukkan tidak aktif, silakan hubungi Administrator.</a></div>
               </div>
               </p>'
             );
         } elseif ($query === 3) {
             $this->session->set_flashdata('alert', '<p class="box-msg">
-        			<div class="info-box alert-danger">
+        			<div class="info-box alert-warning bg-info">
         			<div class="info-box++--icon">
-        			<i class="fa fa-warning"></i>
+        			<i class="fas fa-lock"></i>
         			</div>
         			<div class="info-box-content" style="font-size:14">
-        			<b style="font-size: 20px">GAGAL</b><br>Password yang Anda masukkan salah.</div>
+                    <a style="font-size:12px;">GAGAL<br>Password yang Anda masukkan salah.</a></div>
         			</div>
         			</p>
               ');
