@@ -11,9 +11,14 @@ $con = mysqli_connect($server, $username, $password, $database); // or die("kone
 
 if (isset($_GET['nik'])) {
   $kordinat = $_GET['nik'];
+}else{
+  $kordinat = 'all';
 }
-$gudang = $_GET['gudang'];
-?>
+if (isset($_GET['gudang'])) {
+  $gudang = $_GET['gudang'];
+}else{
+  $gudang = 'all';
+}?>
 
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
@@ -73,7 +78,7 @@ $gudang = $_GET['gudang'];
                 <label class="col-md-6 col-form-label">Berdasarkan Nik Driver</label>
                 <div class="col-md-6">
                   <select class="form-control" name='nik' id="nik">
-                    <option value="all" selected>SHOW ALL</option>
+                    <option value="all" >SHOW ALL</option>
 
                     <?php
                  

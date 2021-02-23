@@ -98,7 +98,7 @@
 
     function getDrivers(nik) {
       return $.ajax({
-        url: `../../api/api/driver`,
+        url: `<?=base_url()?>api/Api/driver`,
         dataType: "json",
         method: "get",
         data: {
@@ -110,8 +110,11 @@
     $("#nik").on("change", function(e) {
       let nik = $(this).val();
       updateMarker(nik);
+   
+
     })
- 
+     $('#gudang').val('<?PHP echo $_GET['gudang'] ?>').prop('selected', true);
+     $('#nik').val('<?PHP echo $_GET['nik'] ?>').prop('selected', true);
 
     async function updateMarker(nik) {
       clearMarkers();
