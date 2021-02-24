@@ -9,11 +9,19 @@
   <!-- meta -->
   <?php require_once('_meta.php'); ?>
   <link rel="stylesheet" href="<?= base_url() ?>assets/modules/datatables/DataTables-1.10.16/css/dataTables.foundation.min.css">
-
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
   <!-- css -->
   <?php require_once('_css.php'); ?>
 
-
+  <style>
+  .spinner-border{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 1;
+    display: none;
+ }
+  </style>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -71,6 +79,8 @@
 
 
   <script src="<?= base_url() ?>plugins/jquery/jquery-max.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
@@ -83,6 +93,45 @@
         addMarker(driver.lat, driver.lngs, driver.nama);
       })
     })()
+
+    $(document).ready(function() {
+      $('#nik').select2({
+        placeholder: "Cari NIK driver",
+        allowClear: true
+      });
+
+      $('#gudang').select2({
+        placeholder: "Cari Kode Gudang",
+        allowClear: true
+      });
+
+      $('#gudang').on('change', function(e) {
+        let kodgud = $(this).val();
+        e.preventDefault();
+        $("#app-loader").show();
+
+        $.ajax({
+          method: 'POST',
+          url: '<?= base_url() ?>api/Api/gudang',
+          dataType: 'json',
+          data: {
+            kodgud: kodgud
+          },
+          success: function(data) {
+            $("#app-loader").hide();
+
+            data = Object.values(data)
+            $("#nik").html(`<option value="all">SHOW ALL</option>`)
+            data.forEach(function(driver) {
+              $("#nik").append(`<option value="${driver.nik}">${driver.nik} - ${driver.nama} -  ${driver.kodgud}</option>`)
+            })
+          },
+          error: function() {
+
+          }
+        })
+      })
+    })
 
     var markers = [];
     var map;
@@ -98,7 +147,7 @@
 
     function getDrivers(nik) {
       return $.ajax({
-        url: `<?=base_url()?>api/Api/driver`,
+        url: `<?= base_url() ?>api/Api/driver`,
         dataType: "json",
         method: "get",
         data: {
@@ -107,14 +156,11 @@
       })
     }
 
+
     $("#nik").on("change", function(e) {
       let nik = $(this).val();
       updateMarker(nik);
-   
-
     })
-     $('#gudang').val('<?PHP echo $_GET['gudang'] ?>').prop('selected', true);
-     $('#nik').val('<?PHP echo $_GET['nik'] ?>').prop('selected', true);
 
     async function updateMarker(nik) {
       clearMarkers();

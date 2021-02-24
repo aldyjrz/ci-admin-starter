@@ -11,14 +11,14 @@ $con = mysqli_connect($server, $username, $password, $database); // or die("kone
 
 if (isset($_GET['nik'])) {
   $kordinat = $_GET['nik'];
-}else{
+} else {
   $kordinat = 'all';
 }
 if (isset($_GET['gudang'])) {
   $gudang = $_GET['gudang'];
-}else{
+} else {
   $gudang = 'all';
-}?>
+} ?>
 
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
@@ -47,76 +47,59 @@ if (isset($_GET['gudang'])) {
         <div class="row">
           <div class="col-md-12">
             <br>
-
-            <form action='http://127.0.0.1/admin-ia/admin/dashboard/' method="GET">
+            <div id='app-loader' class="spinner-border text-info"></div>
+                        <form action='' method="GET">
               <div class="card">
                 <div class="card-header">Cari Lokasi Driver</div>
-                <label class="col-md-6 col-form-label">Input NIK Driver</label>
-                <div class="col-md-3">
-                  <input type='text' id='nik_driver' class='form-control' ></input>
 
-                  <button class="btn btn-info mt-3">TRACK DRIVER</button>
+                <label class="col-md-12 col-form-label  ml-2 ">KODE GUDANG*</label>
+                <div class='row'>
+                  <div class="col-md-3  ml-2">
+                    <select class="form-control  ml-2" name='gudang' id="gudang" value='<?= $gudang ?>'>
+                      <option value="all">SHOW ALL</option>
+                      <option value="KRW">KARAWANG</option>
+                      <option value="SBY">SURABAYA</option>
+                      <option value="BDG">BANDUNG</option>
+                      <option value="SMG">SEMARANG</option>
+                      <option value="MKS">MAKASSAR</option>
+                      <option value="KLT">KLATEN</option>
+                      <option value="MDN">MEDAN</option>
+                    </select>
+                  </div>
+                  <div class="col-md-3">
+                    <button class="btn btn-info mb-3"><i class='fas fa-sync'></i></button>
+                  </div>
                 </div>
-                <hr>
-                <label class="col-md-6 col-form-label">KODE GUDANG*</label>
-                <div class="col-md-6">
-                  <select class="form-control" name='gudang' id="gudang" value='<?=$gudang ?>'> 
-                  <option value="all">SHOW ALL</option>
-                    <option value="KRW">KARAWANG</option>
-                    <option value="SBY">SURABAYA</option>
-                    <option value="BDG">BANDUNG</option>
-                    <option value="SMG">SEMARANG</option>
-                    <option value="MKS">MAKASSAR</option>
-                    <option value="KLT">KLATEN</option>
-                    <option value="MDN">MEDAN</option>
 
-                   
-                  </select>
 
-                  <button class="btn btn-info mb-3 mt-3">CARI LOKASI</button>
-                </div>
-                <label class="col-md-6 col-form-label">Berdasarkan Nik Driver</label>
-                <div class="col-md-6">
-                  <select class="form-control" name='nik' id="nik">
-                    <option value="all" >SHOW ALL</option>
+                <label class="col-md-6 col-form-label ">Berdasarkan Nik Driver</label>
+                <div class="col-md-6 mb-3">
+                  <select class="form-control select2 mb-3" name='nik' id="nik">
+                    <option value="all">SHOW ALL</option>
 
-                    <?php
-                 
-                    $log = mysqli_query($con, "select * from tbl_log  where parameter like '%$gudang%'  group by parameter order by id ASC LIMIT 1000");
-
-                    while ($data = mysqli_fetch_assoc($log)) {
-                      $pisah = explode("&", $data['parameter']);
-
-                      $gd = $pisah[0];
-
-                      $nik_driver = $pisah[1];
-
-                    ?>
-
-                      <option value="<?php echo $nik_driver ?>"> <?php echo $nik_driver ?> - <?php echo $gd ?></option>
-
-                    <?php } ?>
 
                   </select>
 
-                  <button class="btn btn-info mb-3 mt-3">CARI LOKASI</button>
+
                 </div>
-                
+
               </div>
           </div>
           </form>
-          <span id="error"></span>
-        </div>
-    </div>
-    <div class="card">
-      <div class="card-header">
-        <span>Driver Location</span>
-      </div>
-      <div id="map"></div>
-    </div>
-    </main>
+
+          <div class="container-fluid">
+            <div class="card">
+              <div class="card-header">
+                <span>Driver Location</span>
+              </div>
+              <div id="map"></div>
+            </div>
+          </div>
+      </main>
 
 
+    </div>
+</div>
 
 </div>
 <!-- /.row (main row) -->
@@ -125,4 +108,3 @@ if (isset($_GET['gudang'])) {
 <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
- 
